@@ -1,16 +1,16 @@
 import { Head, Link, useForm } from "@inertiajs/react";
 import Layout from "~/template/layout";
 
-export default function Create() {
-    const { data, setData, post, processing, errors } = useForm({
-        name: '',
-        email: '',
+export default function Edit(props: {user: {}}) {
+    const { data, setData, put, processing, errors } = useForm({
+        name: props.user.fullName,
+        email: props.user.email,
         password: '',
     });
 
     function submit(e) {
         e.preventDefault()
-        post('/users')
+        put(`/users/${props.user.id}`)
     }
 
     return (
@@ -19,7 +19,7 @@ export default function Create() {
                 <Head title="Create User"></Head>
                 <div className="py-2 border border-gray-200 rounded-md shadow">
                     <div className="border-b border-gray-200 pb-3">
-                        <h3 className="ml-4 text-2xl font-semibold">Create User</h3>
+                        <h3 className="ml-4 text-2xl font-semibold">Edit User</h3>
                     </div>
                     <form onSubmit={submit} className="p-4">
                         <div className="mb-3">
