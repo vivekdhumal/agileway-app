@@ -53,4 +53,12 @@ export default class UsersController {
 
         return response.redirect().toRoute('users.index')
     }
+
+    async destroy({request, response}: HttpContext) {
+        const user = await User.find(request.param('id'));
+
+        user?.delete();
+
+        return response.redirect().toRoute('users.index');
+    }
 }

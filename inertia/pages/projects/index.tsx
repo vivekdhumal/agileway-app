@@ -8,7 +8,7 @@ export default function Index(props: { projects: [] }){
                 <Head title="Projects"></Head>
                 <div className="mt-0">
                     <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-                    <table className="min-w-full bg-white rounded shadow">
+                    <table className="min-w-full bg-white rounded shadow text-left">
                         <thead>
                         <tr>
                             <th className="py-2 px-4 border-b">Name</th>
