@@ -11,6 +11,8 @@ export default defineConfig({
    */
   sharedData: {
     errors: (ctx) => ctx.session?.flashMessages.get('errors'),
+    error_message: (ctx) => ctx.response.getBody(),
+    user: (ctx) => ctx.auth?.user, 
   },
 
   /**

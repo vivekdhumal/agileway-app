@@ -23,7 +23,7 @@ export default class UsersController {
         const user = new User()
         user.fullName = payload.name
         user.email = payload.email
-        user.password = await hash.make(payload.password)
+        user.password = payload.password
 
         await user.save()
 
@@ -45,7 +45,7 @@ export default class UsersController {
             user.email = payload.email
     
             if(payload.password) {
-                user.password = await hash.make(payload.password)
+                user.password = payload.password
             }
     
             await user.save()

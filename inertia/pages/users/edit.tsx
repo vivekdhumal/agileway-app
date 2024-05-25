@@ -17,7 +17,7 @@ export default function Edit(props: {user: {}}) {
         <>
             <Layout>
                 <Head title="Create User"></Head>
-                <div className="py-2 border border-gray-200 rounded-md shadow">
+                <div className="py-2 border border-gray-200 rounded-md shadow bg-white">
                     <div className="border-b border-gray-200 pb-3">
                         <h3 className="ml-4 text-2xl font-semibold">Edit User</h3>
                     </div>
@@ -37,7 +37,7 @@ export default function Edit(props: {user: {}}) {
                             <input type="password" name="password" id="password" className="mt-2 border w-full border-gray-200 p-2 rounded-md" onChange={e => setData('password', e.target.value)} />
                             {errors.password && <span className="text-sm text-red-400">{errors.password}</span>}
                         </div>
-                        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md mr-3" disabled={processing}>Submit</button>
+                        <button type="submit" className="px-4 py-2 bg-indigo-500 text-white rounded-md mr-3" disabled={processing}>Submit</button>
                         <Link href="/users" className="px-4 py-3 bg-gray-200 text-black rounded-md">Cancel</Link>
                     </form>
                 </div>

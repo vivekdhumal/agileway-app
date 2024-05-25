@@ -27,7 +27,7 @@ export default function DeleteButton(props: {onConfirm}) {
                                 leaveFrom="opacity-100 transform-[scale(100%)]"
                                 leaveTo="opacity-0 transform-[scale(95%)]"
                             >
-                                <DialogPanel className="w-full max-w-md rounded-xl bg-gray/5 p-6 bg-white shadow">
+                                <DialogPanel className="w-full max-w-md rounded-lg bg-gray/5 p-6 bg-white shadow">
                                     <DialogTitle as="h3" className="text-base/7 text-xl font-medium text-gray">
                                         Confirm
                                     </DialogTitle>
