@@ -14,7 +14,7 @@ export default function DeleteButton(props: {onConfirm}) {
 
     return (
         <>
-            <Button onClick={open} className="px-4 py-1 bg-red-500 text-white rounded-md">Delete</Button>
+            <Button onClick={open} className="px-4 py-2 bg-red-500 text-sm text-white rounded">Delete</Button>
             <Transition appear show={isOpen}>
                 <Dialog as="div" className="relative z-10 focus:outline-none" onClose={close}>
                     <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-black/30">
