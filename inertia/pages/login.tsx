@@ -1,4 +1,5 @@
 import { Head, useForm, usePage } from "@inertiajs/react";
+import PrimaryButton from "~/components/PrimaryButton";
 
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
@@ -63,7 +64,12 @@ export default function Login() {
                         </div>
 
                         <div>
-                            <button
+                            <PrimaryButton type="submit"
+                                disabled={processing}
+                                processing={processing} className="w-full">
+                                    Log In
+                            </PrimaryButton>
+                            {/* <button
                                 type="submit"
                                 disabled={processing}
                                 className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold 
@@ -76,7 +82,7 @@ export default function Login() {
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>) }
                                 Log in
-                            </button>
+                            </button> */}
                         </div>
                     </form>
                 </div>
