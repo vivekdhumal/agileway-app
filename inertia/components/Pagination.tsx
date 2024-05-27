@@ -1,36 +1,35 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Link } from '@inertiajs/react'
 
+const pageLinks = (pageUrl) => {
+  const content: any = []
+  pageUrl.map((pageItem: any) => {
+      if(pageItem.isActive) {
+        content.push(
+            <Link
+                key={pageItem.page}
+                href={pageItem.url}
+                className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+            {pageItem.page}
+          </Link>
+        )   
+      } else {
+        content.push(
+          <Link
+              key={pageItem.page}
+              href={pageItem.url}
+              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            >
+            {pageItem.page}
+            </Link> 
+        )
+      }
+  })
+  return content
+}
+
 export default function Pagination({meta, pageUrl}) {
-
-    const getPages = () => {
-        const content: any = []
-        pageUrl.map((pageItem: any) => {
-            if(pageItem.isActive) {
-              content.push(
-                  <Link
-                      key={pageItem.page}
-                      href={pageItem.url}
-                      className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                  {pageItem.page}
-                </Link>
-              )   
-            } else {
-              content.push(
-                <Link
-                    key={pageItem.page}
-                    href={pageItem.url}
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                  >
-                  {pageItem.page}
-                  </Link> 
-              )
-            }
-        })
-        return content
-    }
-
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
@@ -63,7 +62,7 @@ export default function Pagination({meta, pageUrl}) {
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </Link>
-            {getPages()}
+            {pageLinks(pageUrl)}
             <Link
               href={meta.lastPageUrl}
               className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
