@@ -3,7 +3,7 @@ import { Link, usePage } from "@inertiajs/react";
 
 export default function Layout({children}) {
     const {url, component} = usePage()
-    const { user } = usePage().props
+    const { auth_user } = usePage().props
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -12,7 +12,7 @@ export default function Layout({children}) {
                 {/* <p className="mr-4 text-gray-500 cursor-pointer">{user.fullName}</p> */}
                 <Popover>
                     <PopoverButton className="mr-4 flex items-center text-sm/2 font-semibold text-gray-400 focus:outline-none data-[active]:text-gray-500 data-[hover]:text-gray-500 data-[focus]:outline-1 data-[focus]:outline-white">
-                        {user.fullName}
+                        {auth_user.fullName}
                         <svg
                             className="ms-2 -me-0.5 h-4 w-4"
                             xmlns="http://www.w3.org/2000/svg"
