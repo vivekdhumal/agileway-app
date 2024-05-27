@@ -1,16 +1,19 @@
-// import type { HttpContext } from '@adonisjs/core/http'
-
 import User from "#models/user";
 import { createUserValidator, updateUserValidator } from "#validators/user";
 import { HttpContext } from "@adonisjs/core/http";
-import hash from "@adonisjs/core/services/hash";
 
 export default class UsersController {
 
-    async index({inertia}: HttpContext) {
-        let users = await User.all();
+    async index({inertia, request}: HttpContext) {
+        const {page = 1, ...qs} = request.qs()
+        const limit = 10
 
-        return inertia.render('users/index', {users});
+        let users = await User.query().paginate(page, limit);
+
+        users.baseUrl(request.url()).queryString(qs)
+        let pageUrls = users.getUrlsForRange(1, users.lastPage);
+
+        return inertia.render('users/index', {users, pageUrls})
     }
 
     async create({inertia}: HttpContext) {

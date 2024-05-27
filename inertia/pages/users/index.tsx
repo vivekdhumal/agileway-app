@@ -1,8 +1,9 @@
 import { Head, Link, router } from "@inertiajs/react";
 import DeleteButton from "~/components/DeleteButton";
+import Pagination from "~/components/Pagination";
 import Layout from "~/template/layout";
 
-export default function Index(props: {users: []}) {
+export default function Index(props: {users: [], pageUrls: []}) {
     function deleteUser(id: number) {
         // alert(id);
         // Inertia
@@ -26,7 +27,7 @@ export default function Index(props: {users: []}) {
                     </tr>
                     </thead>
                     <tbody>
-                    {props.users.map(user => (
+                    {props.users.data.map(user => (
                         <tr key={user.id}>
                             <td className="py-2 px-4 border-b">{user.fullName}</td>
                             <td className="py-2 px-4 border-b">{user.email}</td>
@@ -39,6 +40,7 @@ export default function Index(props: {users: []}) {
                     ))}
                     </tbody>
                 </table>
+                <Pagination meta={props.users.meta} pageUrl={props.pageUrls}></Pagination>
             </Layout>
         </>
     )
