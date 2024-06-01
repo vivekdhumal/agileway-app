@@ -41,7 +41,9 @@ export default class UsersController {
 
     async update({request, response}: HttpContext) {
         const user = await User.find(request.param('id'))
-        const payload = await request.validateUsing(updateUserValidator)
+        const payload = await request.validateUsing(updateUserValidator, {meta: {
+            userId: user!.id
+        }})
 
         if(user) {
             user.fullName = payload.name

@@ -6,7 +6,7 @@ export default function Layout({children}) {
     const { auth_user } = usePage().props
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col text-gray-700">
             <header className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 p-2 flex justify-between">
                 <h1 className="text-2xl font-bold ml-2">AgileWay</h1>
                 {/* <p className="mr-4 text-gray-500 cursor-pointer">{user.fullName}</p> */}
@@ -39,13 +39,10 @@ export default function Layout({children}) {
                         className="w-48 mt-2 bg-white shadow rounded opacity-100 text-sm/6 [--anchor-gap:var(--spacing-5)]"
                         >
                         <div className="py-2">
-                            <a className="block py-2 px-3 hover:bg-gray-50" href="#">
+                            <Link href="/profile" className="block py-2 px-3 border-b">
                                 <p className="font-semibold text-gray-500 hover:text-gray-900">Profile</p>
-                            </a>
-                            <a className="block py-2 px-3 hover:bg-gray-50 border-b" href="#">
-                                <p className="font-semibold text-gray-500 hover:text-gray-900">Change Password</p>
-                            </a>
-                            <Link className="block py-2 px-3 hover:bg-gray-50" href="/logout" method="post">
+                            </Link>
+                            <Link className="block py-2 px-3" href="/logout" method="post">
                                 <p className="font-semibold text-gray-500 hover:text-gray-900">Logout</p>
                             </Link>
                         </div>
