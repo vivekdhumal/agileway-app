@@ -22,7 +22,7 @@ async function oldPassword(
         .where('id', field.meta.userId)
         .first();
 
-    if (! await hash.verify(row.password, value)) {
+    if (! await hash.verify(row[options.column], value)) {
         field.report('The {{field}} field is not matched', 'oldPassword', field)
     }
 

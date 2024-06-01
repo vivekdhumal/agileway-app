@@ -5,8 +5,6 @@ import Layout from "~/template/layout";
 
 export default function Index(props: {users: [], pageUrls: []}) {
     function deleteUser(id: number) {
-        // alert(id);
-        // Inertia
         router.delete(`/users/${id}`)
     }
 
@@ -33,7 +31,6 @@ export default function Index(props: {users: [], pageUrls: []}) {
                             <td className="py-2 px-4 border-b">{user.email}</td>
                             <td className="py-2 px-4 border-b text-right">
                                 <Link href={`/users/${user.id}/edit`} className="px-4 py-2 bg-indigo-500 text-sm text-white rounded mr-2">Edit</Link>
-                                {/* <a href="" className="px-4 py-2 bg-red-500 text-white rounded-md">Delete</a> */}
                                 <DeleteButton key={user.id} onConfirm={e => deleteUser(user.id)}/>
                             </td>
                         </tr>
