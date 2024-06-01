@@ -1,4 +1,5 @@
 import { Head, Link, router } from "@inertiajs/react";
+import { useState } from "react";
 import DeleteButton from "~/components/DeleteButton";
 import Pagination from "~/components/Pagination";
 import Layout from "~/template/layout";
@@ -8,13 +9,31 @@ export default function Index(props: {users: [], pageUrls: []}) {
         router.delete(`/users/${id}`)
     }
 
+    const querString = window.location.search
+    const urlParams = new URLSearchParams(querString)
+
+
+    const [search, setSearch] = useState(urlParams.get('search'));
+
+    const onSearch = (e) => {
+        setSearch(e.target.value)
+
+        router.get('/users', { search: e.target.value}, { replace: true, preserveState: true })
+
+    }
+
     return (
         <>
             <Layout>
                 <Head title="Users"></Head>
-                <div className="flex justify-between items-baseline">
-                    <h2 className="text-2xl font-semibold mb-4">Users</h2>
-                    <Link href="/users/create" className="px-4 py-2 text-sm bg-indigo-500 text-white rounded-md">Create New</Link>
+                <h2 className="text-2xl font-semibold mb-4">Users</h2>
+                <div className="flex justify-between mb-6">
+                    <input type="text" 
+                        placeholder="Search..."
+                        value={search}
+                        onChange={onSearch}
+                        className="px-2 py-1 mr-6 w-1/2 rounded border-none shadow hover:border-none focus:border-none" />
+                    <Link href="/users/create" className="px-4 py-2 text-sm bg-indigo-500 text-white rounded">Create New</Link>
                 </div>
                 <table className="bg-white rounded shadow mt-4 table-auto w-full text-left">
                     <thead>

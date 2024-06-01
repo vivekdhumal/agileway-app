@@ -8,7 +8,14 @@ export default class UsersController {
         const {page = 1, ...qs} = request.qs()
         const limit = 10
 
-        let users = await User.query().paginate(page, limit);
+        let userQuery = User.query();
+
+        if(request.input('search')) {
+            userQuery.whereILike('full_name', "%"+request.input('search')+"%")
+            .orWhereILike('email', "%"+request.input('search')+"%")
+        }
+
+        let users = await userQuery.paginate(page, limit);
 
         users.baseUrl(request.url()).queryString(qs)
         let pageUrls = users.getUrlsForRange(1, users.lastPage);
