@@ -8,7 +8,7 @@ export default function Layout({children}) {
     return (
         <div className="min-h-screen flex flex-col text-gray-700">
             <header className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 p-3 flex justify-between items-center">
-                <h1 className="text-2xl font-bold ml-2">AgileWay</h1>
+                <h1 className="text-2xl font-bold ml-2 text-gray-500">AgileWay</h1>
                 {/* <p className="mr-4 text-gray-500 cursor-pointer">{user.fullName}</p> */}
                 <Popover>
                     <PopoverButton className="mr-4 flex items-center text-sm/2 font-semibold text-gray-400 focus:outline-none data-[active]:text-gray-500 data-[hover]:text-gray-500 data-[focus]:outline-1 data-[focus]:outline-white">
