@@ -18,10 +18,17 @@ export default function Show() {
                     </div>
                 )}
 
-                <Card title="Profile" className="mb-6">
+                <h2 className="text-xl font-semibold">Profile Information</h2>
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Update your account's profile information and email address.</p>
+                
+                <Card className="mb-6 mt-4">
                     <ProfileForm/>
                 </Card>
-                <Card title="Change Password">
+                
+                <h2 className="text-xl font-semibold">Change Password</h2>
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Ensure your account is using a long, random password to stay secure.</p>
+
+                <Card className="mt-4">
                     <PasswordForm/>
                 </Card>
             </Layout>

@@ -35,7 +35,7 @@ export default function Index(props: {users: [], pageUrls: []}) {
                         className="px-2 py-1 mr-6 w-1/2 rounded border-none shadow hover:border-none focus:border-none" />
                     <Link href="/users/create" className="px-4 py-2 text-sm bg-indigo-500 text-white rounded">Create New</Link>
                 </div>
-                <table className="bg-white rounded shadow mt-4 table-auto w-full text-left">
+                <table className="bg-white rounded text-sm shadow mt-4 table-auto w-full text-left">
                     <thead>
                     <tr>
                         <th className="py-2 px-4 border-b">Name</th>
@@ -46,9 +46,9 @@ export default function Index(props: {users: [], pageUrls: []}) {
                     <tbody>
                     {props.users.data.map(user => (
                         <tr key={user.id}>
-                            <td className="py-2 px-4 border-b">{user.fullName}</td>
-                            <td className="py-2 px-4 border-b">{user.email}</td>
-                            <td className="py-2 px-4 border-b text-right">
+                            <td className="py-1 px-4 border-b">{user.fullName}</td>
+                            <td className="py-1 px-4 border-b">{user.email}</td>
+                            <td className="py-1 px-4 border-b text-right">
                                 <Link href={`/users/${user.id}/edit`} className="px-4 py-2 bg-indigo-500 text-sm text-white rounded mr-2">Edit</Link>
                                 <DeleteButton key={user.id} onConfirm={e => deleteUser(user.id)}/>
                             </td>
