@@ -21,7 +21,7 @@ router.post('/login', [LoginController, 'login']).use(middleware.guest());
 
 router.group(() => {
     router.get('/', [HomeController, 'index']).use(middleware.auth())
-    router.get('/projects', [ProjectsController, 'index'])
+    router.resource('/projects', ProjectsController).except(['show'])
     router.resource('/users', UsersController).except(['show'])
     router.post('/logout', [LoginController, 'logout']);
     router.get('/profile', [ProfileController, 'show'])

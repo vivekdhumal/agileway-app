@@ -27,7 +27,7 @@ export default function Index(props: { projects: [] }){
                             value={search}
                             onChange={onSearch}
                             className="px-2 py-1 mr-6 w-1/2 rounded border-none shadow hover:border-none focus:border-none" />
-                        <Link href="/users/create" className="px-4 py-2 text-sm bg-indigo-500 text-white rounded flex items-center justify-between">
+                        <Link href="/projects/create" className="px-4 py-2 text-sm bg-indigo-500 text-white rounded flex items-center justify-between">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
@@ -44,15 +44,36 @@ export default function Index(props: { projects: [] }){
                                 <thead>
                                 <tr>
                                     <th className="py-2 px-4 border-b">Name</th>
+                                    <th className="py-2 px-4 border-b">Start Date</th>
+                                    <th className="py-2 px-4 border-b">End Date</th>
                                     <th className="py-2 px-4 border-b"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {props.projects.map(project => (
-                                    <tr key={project.id}>
-                                        <td className="py-2 px-4 border-b">{project.projectName}
-                                            {project.projectDescription}</td>
+                                {props.projects.data.map(project => (
+                                    <tr key={project?.id} className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b">
+                                            <Link href={`/projects/${project?.id}/edit`} title="Edit">
+                                                <p className="font-bold">{project?.projectName}</p>
+                                                <p className="text-gray-400">{project?.shortDescription}</p>
+                                            </Link>
+                                        </td>
+                                        <td className="py-2 px-4 border-b">
+                                            <Link href={`/projects/${project?.id}/edit`} title="Edit">
+                                                {project?.projectStartDate ?? '-'}
+                                            </Link>
+                                        </td>
+                                        <td className="py-2 px-4 border-b">
+                                            <Link href={`/projects/${project?.id}/edit`} title="Edit">
+                                                {project?.projectEndDate ?? '-'}
+                                            </Link>
+                                        </td>
+                                        <td className="py-2 px-4 border-b w-px">
+                                            <Link href={`/projects/${project?.id}/edit`} title="Edit" className="text-gray-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                                </svg>
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}
